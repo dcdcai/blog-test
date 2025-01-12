@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>我的博客</title>
     <style>
+      :root {
+        --primary-color: #00f7ff;
+        --secondary-color: #2c3e50;
+        --accent-color: #3498db;
+        --dark-bg: #1a1a1a;
+        --card-bg: #222831;
+      }
+
       * {
         margin: 0;
         padding: 0;
@@ -12,9 +20,21 @@
       }
 
       body {
-        font-family: "Microsoft YaHei", sans-serif;
+        font-family: "Segoe UI", sans-serif;
         line-height: 1.6;
-        color: #333;
+        color: #ecf0f1;
+        background: var(--dark-bg);
+        background-image: radial-gradient(
+            circle at 25px 25px,
+            rgba(0, 247, 255, 0.1) 2%,
+            transparent 0%
+          ),
+          radial-gradient(
+            circle at 75px 75px,
+            rgba(0, 247, 255, 0.05) 2%,
+            transparent 0%
+          );
+        background-size: 100px 100px;
       }
 
       .container {
@@ -25,9 +45,13 @@
 
       /* 导航栏样式 */
       header {
-        background: #333;
+        background: rgba(34, 40, 49, 0.95);
         padding: 1rem 0;
-        color: white;
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--primary-color);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
       }
 
       nav ul {
@@ -37,8 +61,27 @@
       }
 
       nav a {
-        color: white;
+        color: var(--primary-color);
         text-decoration: none;
+        font-weight: 500;
+        position: relative;
+        padding: 0.5rem 0;
+        transition: all 0.3s ease;
+      }
+
+      nav a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--primary-color);
+        transition: width 0.3s ease;
+      }
+
+      nav a:hover::after {
+        width: 100%;
       }
 
       /* 主要内容区域 */
@@ -51,27 +94,117 @@
 
       /* 文章卡片样式 */
       .article-card {
-        background: #fff;
-        border-radius: 8px;
+        background: var(--card-bg);
+        border-radius: 12px;
         padding: 1.5rem;
         margin-bottom: 1.5rem;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 15px rgba(0, 247, 255, 0.1);
+        border: 1px solid rgba(0, 247, 255, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .article-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, var(--primary-color), transparent);
+      }
+
+      .article-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 247, 255, 0.2);
+      }
+
+      .article-card h2 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .meta {
+        color: #718093;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+
+      .article-card a {
+        color: var(--primary-color);
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 1rem;
+        padding: 0.5rem 1rem;
+        border: 1px solid var(--primary-color);
+        border-radius: 20px;
+        transition: all 0.3s ease;
+      }
+
+      .article-card a:hover {
+        background: var(--primary-color);
+        color: var(--dark-bg);
       }
 
       /* 侧边栏样式 */
       .sidebar {
-        background: #f5f5f5;
+        background: var(--card-bg);
         padding: 1.5rem;
-        border-radius: 8px;
+        border-radius: 12px;
+        border: 1px solid rgba(0, 247, 255, 0.1);
+        position: sticky;
+        top: 100px;
+      }
+
+      .sidebar h3 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--primary-color);
+      }
+
+      .sidebar ul {
+        list-style: none;
+      }
+
+      .sidebar a {
+        color: #ecf0f1;
+        text-decoration: none;
+        padding: 0.5rem 0;
+        display: block;
+        transition: color 0.3s ease;
+      }
+
+      .sidebar a:hover {
+        color: var(--primary-color);
       }
 
       /* 页脚样式 */
       footer {
-        background: #333;
-        color: white;
+        background: var(--card-bg);
+        color: #ecf0f1;
         padding: 1rem 0;
         text-align: center;
         margin-top: 2rem;
+        border-top: 1px solid var(--primary-color);
+      }
+
+      /* 添加响应式霓虹光效果 */
+      @keyframes glow {
+        0% {
+          box-shadow: 0 0 5px var(--primary-color);
+        }
+        50% {
+          box-shadow: 0 0 20px var(--primary-color);
+        }
+        100% {
+          box-shadow: 0 0 5px var(--primary-color);
+        }
+      }
+
+      .article-card:hover {
+        animation: glow 2s infinite;
       }
     </style>
   </head>
