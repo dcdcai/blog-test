@@ -39,9 +39,13 @@
             transparent 0%
           );
         background-size: 100px 100px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
       }
 
       .container {
+        flex: 1;
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 20px;
@@ -190,8 +194,8 @@
         color: #ecf0f1;
         padding: 1rem 0;
         text-align: center;
-        margin-top: 2rem;
         border-top: 1px solid var(--primary-color);
+        margin-top: auto;
       }
 
       /* 添加响应式霓虹光效果 */
