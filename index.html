@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>我的博客</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
     <style>
       :root {
         --primary-color: #00f7ff;
@@ -206,6 +210,51 @@
       .article-card:hover {
         animation: glow 2s infinite;
       }
+
+      /* 个人信息样式 */
+      .profile {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .profile-avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        margin: 0 auto 1rem;
+        border: 3px solid var(--primary-color);
+        padding: 3px;
+        transition: transform 0.3s ease;
+      }
+
+      .profile-avatar:hover {
+        transform: scale(1.05);
+      }
+
+      .profile-name {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .profile-info {
+        color: #ecf0f1;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .profile-email {
+        color: var(--primary-color);
+        font-size: 0.9rem;
+        word-break: break-all;
+      }
+
+      .profile-social {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
     </style>
   </head>
   <body>
@@ -245,8 +294,23 @@
         </main>
 
         <aside class="sidebar">
-          <h3>关于作者</h3>
-          <p>一个热爱写作和分享的博主...</p>
+          <div class="profile">
+            <img src="你的头像URL" alt="个人头像" class="profile-avatar" />
+            <h2 class="profile-name">你的名字</h2>
+            <p class="profile-info">年龄：25岁</p>
+            <p class="profile-info">职业：前端开发工程师</p>
+            <p class="profile-info">技术栈：HTML, CSS, JavaScript, Vue.js</p>
+            <p class="profile-email">📧 Email: your.email@example.com</p>
+            <div class="profile-social">
+              <a
+                href="https://github.com/你的用户名"
+                target="_blank"
+                title="GitHub"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
 
           <h3>热门文章</h3>
           <ul>
